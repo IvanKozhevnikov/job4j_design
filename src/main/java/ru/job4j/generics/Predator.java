@@ -1,6 +1,6 @@
 package ru.job4j.generics;
 
-public class Predator {
+public class Predator extends Animal {
     private String value = "predator";
 
     @Override
