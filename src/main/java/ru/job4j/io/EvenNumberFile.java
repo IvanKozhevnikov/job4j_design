@@ -7,7 +7,7 @@ import java.io.IOException;
 public class EvenNumberFile {
     public static void main(String[] args) {
 
-        try (FileInputStream in = new FileInputStream("even.txt")) {
+        try (FileInputStream in = new FileInputStream("C:\\Users\\Ivan_Kozhevnikov\\IdeaProjects\\job4j_design\\src\\main\\resource\\even.txt")) {
             StringBuilder text = new StringBuilder();
             int read;
             while ((read = in.read()) != -1) {
@@ -15,7 +15,7 @@ public class EvenNumberFile {
             }
             String[] lines = text.toString().split(System.lineSeparator());
             for (String line : lines) {
-                System.out.println(Integer.parseInt(line) % 2 == 0);
+                System.out.println("Число " + line + " " + (Integer.parseInt(line) % 2 == 0 ? "чётное" : "нечётное"));
             }
         } catch (IOException e) {
             e.printStackTrace();
