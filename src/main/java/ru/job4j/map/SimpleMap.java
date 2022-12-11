@@ -78,7 +78,6 @@ public class SimpleMap<K, V> implements Map<K, V> {
     }
 
     @Override
-
     public Iterator<K> iterator() {
         return new Iterator<K>() {
             final int uniqueModCount = modCount;
@@ -114,7 +113,5 @@ public class SimpleMap<K, V> implements Map<K, V> {
             this.key = key;
             this.value = value;
         }
-
     }
-
 }
