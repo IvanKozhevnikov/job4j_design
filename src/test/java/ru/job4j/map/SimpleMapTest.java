@@ -151,4 +151,30 @@ class SimpleMapTest {
         assertThat(map.put(0, "0")).isTrue();
         assertThat(map.get(null)).isNull();
     }
+
+    @Test
+    void whenPutGetRemoveAndIterator() {
+        SimpleMap<Integer, String> map = new SimpleMap<>();
+        assertThat(map.get(1)).isNull();
+        assertThat(map.put(1, "1")).isTrue();
+        assertThat(map.put(1, "1")).isFalse();
+        assertThat(map.put(2, "2")).isTrue();
+        assertThat(map.put(2, "2")).isFalse();
+        assertThat(map.put(3, "3")).isTrue();
+        assertThat(map.get(1)).isEqualTo("1");
+        assertThat(map.get(2)).isEqualTo("2");
+        assertThat(map.get(3)).isEqualTo("3");
+        assertThat(map.remove(1)).isTrue();
+        assertThat(map.remove(1)).isFalse();
+        assertThat(map.get(1)).isNull();
+        assertThat(map.get(4)).isNull();
+        Iterator<Integer> it = map.iterator();
+        assertThat(it.hasNext()).isTrue();
+        assertThat(it.next()).isEqualTo(2);
+        assertThat(it.hasNext()).isTrue();
+        assertThat(it.next()).isEqualTo(3);
+        assertThatThrownBy(it::next)
+                .isInstanceOf(NoSuchElementException.class)
+                .hasMessage("No elements");
+    }
 }
