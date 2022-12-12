@@ -23,7 +23,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
             expand();
         }
         boolean rsl = false;
-        int index = indexFor(hash(key));
+        int index = indexFor((hash((key == null) ? 0 : key.hashCode())));
         if (table[index] == null) {
             table[index] = new MapEntry<K, V>(key, value);
             modCount++;
@@ -33,8 +33,8 @@ public class SimpleMap<K, V> implements Map<K, V> {
         return rsl;
     }
 
-    private int hash(K key) {
-        return (key == null) ? 0 : (key.hashCode()) ^ (key.hashCode() >>> 16);
+    private int hash(int hashCode) {
+        return (hashCode == 0) ? 0 : (hashCode ^ (hashCode >>> 16));
     }
 
     private int indexFor(int hash) {
@@ -48,7 +48,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
             if (entry == null) {
                 continue;
             }
-            int index = indexFor(hash(entry.key));
+            int index = indexFor(hash((entry.key == null) ? 0 : entry.key.hashCode()));
             rsl[index] = entry;
         }
         table = rsl;
@@ -57,8 +57,8 @@ public class SimpleMap<K, V> implements Map<K, V> {
     @Override
     public V get(K key) {
         V rsl = null;
-        int index = indexFor(hash(key));
-        if (table[index] != null && hash(key) == hash(table[index].key) && Objects.equals(table[index].key, key)) {
+        int index = indexFor(hash((key == null) ? 0 : key.hashCode()));
+        if (table[index] != null && Objects.equals(table[index].key, key)) {
             rsl = table[index].value;
         }
         return rsl;
@@ -67,8 +67,9 @@ public class SimpleMap<K, V> implements Map<K, V> {
     @Override
     public boolean remove(K key) {
         boolean rsl = false;
-        int index = indexFor(hash(key));
-        if (table[index] != null && hash(key) == hash(table[index].key) && Objects.equals(table[index].key, key)) {
+        int hashCode = (key == null) ? 0 : key.hashCode();
+        int index = indexFor(hash(hashCode));
+        if (table[index] != null && Objects.equals(table[index].key, key)) {
             table[index] = null;
             modCount++;
             count--;
