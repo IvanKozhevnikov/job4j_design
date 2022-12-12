@@ -11,6 +11,18 @@ public class BinaryMap {
         return sb.reverse().toString();
     }
 
+    private static void printByte(int value) {
+        String currentBinary = Integer.toBinaryString(256 + value);
+        System.out.println(currentBinary.substring(currentBinary.length() - 8));
+    }
+
+    public static String stringToBinary(char s) {
+
+        String a = Integer.toBinaryString(s);
+
+        return a;
+    }
+
     public static void main(String[] args) {
         int h = 123;
         System.out.println("До:    " + binary(h));
@@ -31,5 +43,17 @@ public class BinaryMap {
         System.out.println("32 - 1   =" + binary(h));
         h = 64 - 1;
         System.out.println("64 - 1   =" + binary(h));
+        System.out.println();
+        System.out.println("////______________________");
+        System.out.println((byte) 15);
+        System.out.println(binary(300));
+        System.out.println(binary(300 >>> 2));
+        System.out.println();
+        printByte(12);
+        printByte(12 >>> 2);
+        System.out.println(">>>");
+        System.out.println(stringToBinary('a'));
+        System.out.println("%");
+
     }
 }
