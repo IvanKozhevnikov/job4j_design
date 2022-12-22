@@ -24,7 +24,7 @@ public class BinaryMap {
     }
 
     public static void main(String[] args) {
-        int h = 123;
+        int h = 5;
         System.out.println("До:    " + binary(h));
         System.out.println("После: " + binary(h >>> 4));
         h = 255;
@@ -54,6 +54,7 @@ public class BinaryMap {
         System.out.println(">>>");
         System.out.println(stringToBinary('a'));
         System.out.println("%");
-
+        System.out.println(2 % 3);
+        System.out.println(100 / 150);
     }
 }

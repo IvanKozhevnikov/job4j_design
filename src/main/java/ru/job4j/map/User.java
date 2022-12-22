@@ -18,13 +18,16 @@ public class User {
         Calendar birthday = new GregorianCalendar(2000, Calendar.APRIL, 17, 11, 5, 0);
         User user1 = new User("Alex", 2, 3);
         User user2 = new User("Alex", 2, 3);
-        Map<User, Object> map = new HashMap<>();
+        int hashCode1 = user1.hashCode();
+        System.out.printf("user1 - хэшкод: %s", hashCode1);
+        int a = 1;
+        int b = 2;
+        Map<Object, Object> map = new HashMap<>();
         map.put(user1, new Object());
         map.put(user2, new Object());
         System.out.println(user1);
         System.out.println(user2);
         System.out.println("Map" + map);
-        int hashCode1 = user1.hashCode();
         int hash1 = hashCode1 ^ (hashCode1 >>> 16);
         int bucket1 = hash1 & 15;
         System.out.printf("user1 - хэшкод: %s, хэш: %s, бакет: %s", hashCode1, hash1, bucket1);
@@ -64,5 +67,15 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(name, children, birthday);
+
     }
 }
+//    @Override
+//    public int hashCode() {
+//        int result = 17;
+//        result = 31 * result + (name == null ? 0 : name.hashCode());
+//        result = 31 * result + children;
+//        result = 31 * result + birthday;
+//
+//        return result;
+//    }
