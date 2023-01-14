@@ -12,11 +12,11 @@ public class EchoServer {
                 try (OutputStream out = socket.getOutputStream();
                      BufferedReader in = new BufferedReader(
                              new InputStreamReader(socket.getInputStream()))) {
-                    String answer = "Hello";
+                    String answer = "Answer";
                     for (String str = in.readLine(); str != null && !str.isEmpty(); str = in.readLine()) {
                         System.out.println(str);
                         if (str.contains("/?msg=Hello")) {
-                           answer = answer;
+                           answer = "Hello";
                         }
                         if (str.contains("/?msg=Exit")) {
                             server.close();
