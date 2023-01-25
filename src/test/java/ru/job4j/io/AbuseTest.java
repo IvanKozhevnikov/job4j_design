@@ -11,12 +11,12 @@ class AbuseTest {
 
     @Test
     void drop(@TempDir Path tempDir) throws IOException {
-        File source = tempDir.resolve("data/source.txt").toFile();
+        File source = tempDir.resolve("C:/Users/Ivan_Kozhevnikov/IdeaProjects/job4j_design/data/source.txt").toFile();
         try (PrintWriter out = new PrintWriter(source)) {
             out.println("hello foolish dude");
             out.println("java job4j php");
         }
-        File target  = tempDir.resolve("data/targetTemp.txt").toFile();
+        File target  = tempDir.resolve("C:/Users/Ivan_Kozhevnikov/IdeaProjects/job4j_design/data/targetTemp.txt").toFile();
         Abuse.drop(source.getAbsolutePath(), target.getAbsolutePath(), List.of("foolish", "php"));
 
         StringBuilder rsl = new StringBuilder();
