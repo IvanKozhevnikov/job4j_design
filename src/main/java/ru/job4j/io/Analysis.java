@@ -12,31 +12,28 @@ public class Analysis {
         StringBuilder str = new StringBuilder();
         try (BufferedReader in = new BufferedReader(new FileReader(source))) {
             String e = in.readLine();
-            int i = 0;
+            boolean availability = false;
             while (e != null) {
-                if (i == 0 && (e.contains("400") || e.contains("500"))) {
+                if (!availability && (e.contains("400") || e.contains("500"))) {
                     str.append(e.split(" ")[1]).append(";");
-                    i++;
+                    availability = true;
                 }
-                if (i == 1 && (e.contains("200") || e.contains("300"))) {
+                if (availability && (e.contains("200") || e.contains("300"))) {
                     str.append(e.split(" ")[1]);
-                    i = 0;
+                    availability = false;
                     values.add(str.toString());
                     str.delete(0, str.length());
                 }
                 e = in.readLine();
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         save(values, target);
     }
 
     public static void save(List<String> log, String file) {
-        try (PrintWriter out = new PrintWriter(
-                new BufferedOutputStream(
-                        new FileOutputStream(file)
-                ))) {
+        try (PrintWriter out = new PrintWriter(file)) {
             log.forEach(out :: println);
         } catch (IOException e) {
             e.printStackTrace();
