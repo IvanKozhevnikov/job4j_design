@@ -24,7 +24,6 @@ class AnalysisTest {
         File target  = tempDir.resolve("C:/Users/Ivan_Kozhevnikov/IdeaProjects/job4j_design/data/targetTemp.txt").toFile();
         Analysis analysis = new Analysis();
         analysis.unavailable(source.getAbsolutePath(), target.getAbsolutePath());
-
         StringBuilder rsl = new StringBuilder();
         try (BufferedReader in = new BufferedReader(new FileReader(target))) {
             in.lines().forEach(rsl::append);
@@ -46,7 +45,6 @@ class AnalysisTest {
         File target  = tempDir.resolve("C:/Users/Ivan_Kozhevnikov/IdeaProjects/job4j_design/data/targetTemp.txt").toFile();
         Analysis analysis = new Analysis();
         analysis.unavailable(source.getAbsolutePath(), target.getAbsolutePath());
-
         StringBuilder rsl = new StringBuilder();
         try (BufferedReader in = new BufferedReader(new FileReader(target))) {
             in.lines().forEach(rsl::append);

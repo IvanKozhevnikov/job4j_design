@@ -18,7 +18,6 @@ class AbuseTest {
         }
         File target  = tempDir.resolve("C:/Users/Ivan_Kozhevnikov/IdeaProjects/job4j_design/data/targetTemp.txt").toFile();
         Abuse.drop(source.getAbsolutePath(), target.getAbsolutePath(), List.of("foolish", "php"));
-
         StringBuilder rsl = new StringBuilder();
         try (BufferedReader in = new BufferedReader(new FileReader(target))) {
             in.lines().forEach(rsl::append);

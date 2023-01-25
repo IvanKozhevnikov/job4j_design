@@ -11,8 +11,8 @@ class AnalizeTest {
         User u1 = new User(1, "A");
         User u2 = new User(2, "B");
         User u3 = new User(3, "C");
-        Set previous = Set.of(u1, u2, u3);
-        Set current = Set.of(u1, u2, u3);
+        Set<User> previous = Set.of(u1, u2, u3);
+        Set<User> current = Set.of(u1, u2, u3);
         assertThat(Analize.diff(previous, current)).isEqualTo(new Info(0, 0, 0));
     }
 
@@ -21,8 +21,8 @@ class AnalizeTest {
         User u1 = new User(1, "A");
         User u2 = new User(2, "B");
         User u3 = new User(3, "C");
-        Set previous = Set.of(u1, u2, u3);
-        Set current = Set.of(u1, new User(2, "BB"), u3);
+        Set<User> previous = Set.of(u1, u2, u3);
+        Set<User> current = Set.of(u1, new User(2, "BB"), u3);
         assertThat(Analize.diff(previous, current)).isEqualTo(new Info(0, 1, 0));
     }
 
@@ -31,8 +31,8 @@ class AnalizeTest {
         User u1 = new User(1, "A");
         User u2 = new User(2, "B");
         User u3 = new User(3, "C");
-        Set previous = Set.of(u1, u2, u3);
-        Set current = Set.of(u1, new User(2, "BB"), new User(3, "ABC"));
+        Set<User> previous = Set.of(u1, u2, u3);
+        Set<User> current = Set.of(u1, new User(2, "BB"), new User(3, "ABC"));
         assertThat(Analize.diff(previous, current)).isEqualTo(new Info(0, 2, 0));
     }
 
@@ -41,8 +41,8 @@ class AnalizeTest {
         User u1 = new User(1, "A");
         User u2 = new User(2, "B");
         User u3 = new User(3, "C");
-        Set previous = Set.of(u1, u2, u3);
-        Set current = Set.of(u1, u3);
+        Set<User> previous = Set.of(u1, u2, u3);
+        Set<User> current = Set.of(u1, u3);
         assertThat(Analize.diff(previous, current)).isEqualTo(new Info(0, 0, 1));
     }
 
@@ -51,8 +51,8 @@ class AnalizeTest {
         User u1 = new User(1, "A");
         User u2 = new User(2, "B");
         User u3 = new User(3, "C");
-        Set previous = Set.of(u1, u2, u3);
-        Set current = Set.of(u1);
+        Set<User> previous = Set.of(u1, u2, u3);
+        Set<User> current = Set.of(u1);
         assertThat(Analize.diff(previous, current)).isEqualTo(new Info(0, 0, 2));
     }
 
@@ -61,8 +61,8 @@ class AnalizeTest {
         User u1 = new User(1, "A");
         User u2 = new User(2, "B");
         User u3 = new User(3, "C");
-        Set previous = Set.of(u1, u2, u3);
-        Set current = Set.of();
+        Set<User> previous = Set.of(u1, u2, u3);
+        Set<User> current = Set.of();
         assertThat(Analize.diff(previous, current)).isEqualTo(new Info(0, 0, 3));
     }
 
@@ -71,8 +71,8 @@ class AnalizeTest {
         User u1 = new User(1, "A");
         User u2 = new User(2, "B");
         User u3 = new User(3, "C");
-        Set previous = Set.of(u1, u2, u3);
-        Set current = Set.of(u1, u2, u3, new User(4, "D"), new User(5, "D"));
+        Set<User> previous = Set.of(u1, u2, u3);
+        Set<User> current = Set.of(u1, u2, u3, new User(4, "D"), new User(5, "D"));
         assertThat(Analize.diff(previous, current)).isEqualTo(new Info(2, 0, 0));
     }
 
@@ -81,8 +81,8 @@ class AnalizeTest {
         User u1 = new User(1, "A");
         User u2 = new User(2, "B");
         User u3 = new User(3, "C");
-        Set previous = Set.of(u1, u2, u3);
-        Set current = Set.of(u1, u2, u3, new User(4, "D"), new User(5, "D"));
+        Set<User> previous = Set.of(u1, u2, u3);
+        Set<User> current = Set.of(u1, u2, u3, new User(4, "D"), new User(5, "D"));
         assertThat(Analize.diff(previous, current)).isEqualTo(new Info(2, 0, 0));
     }
 
@@ -91,8 +91,8 @@ class AnalizeTest {
         User u1 = new User(1, "A");
         User u2 = new User(2, "B");
         User u3 = new User(3, "C");
-        Set previous = Set.of(u1, u2, u3);
-        Set current = Set.of(new User(1, "AA"), u2, new User(4, "D"));
+        Set<User> previous = Set.of(u1, u2, u3);
+        Set<User> current = Set.of(new User(1, "AA"), u2, new User(4, "D"));
         assertThat(Analize.diff(previous, current)).isEqualTo(new Info(1, 1, 1));
     }
 }
