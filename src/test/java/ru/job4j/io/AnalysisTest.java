@@ -12,7 +12,7 @@ class AnalysisTest {
 
     @Test
     void unavailableTwoTimeIntervals(@TempDir Path tempDir) throws IOException {
-        File source = tempDir.resolve("C:/Users/Ivan_Kozhevnikov/IdeaProjects/job4j_design/data/source.txt").toFile();
+        File source = tempDir.resolve("source.txt").toFile();
         try (PrintWriter out = new PrintWriter(source)) {
             out.println("200 10:56:01");
             out.println("500 10:57:01");
@@ -21,7 +21,7 @@ class AnalysisTest {
             out.println("500 11:01:02");
             out.println("200 11:02:02");
         }
-        File target  = tempDir.resolve("C:/Users/Ivan_Kozhevnikov/IdeaProjects/job4j_design/data/targetTemp.txt").toFile();
+        File target  = tempDir.resolve("targetTemp.txt").toFile();
         Analysis analysis = new Analysis();
         analysis.unavailable(source.getAbsolutePath(), target.getAbsolutePath());
         StringBuilder rsl = new StringBuilder();
@@ -33,7 +33,7 @@ class AnalysisTest {
 
     @Test
     void unavailableOnePeriodOfTime(@TempDir Path tempDir) throws IOException {
-        File source = tempDir.resolve("C:/Users/Ivan_Kozhevnikov/IdeaProjects/job4j_design/data/source.txt").toFile();
+        File source = tempDir.resolve("source.txt").toFile();
         try (PrintWriter out = new PrintWriter(source)) {
             out.println("200 10:56:01");
             out.println("500 10:57:01");
@@ -42,7 +42,7 @@ class AnalysisTest {
             out.println("400 11:01:02");
             out.println("300 11:02:02");
         }
-        File target  = tempDir.resolve("C:/Users/Ivan_Kozhevnikov/IdeaProjects/job4j_design/data/targetTemp.txt").toFile();
+        File target  = tempDir.resolve("targetTemp.txt").toFile();
         Analysis analysis = new Analysis();
         analysis.unavailable(source.getAbsolutePath(), target.getAbsolutePath());
         StringBuilder rsl = new StringBuilder();
