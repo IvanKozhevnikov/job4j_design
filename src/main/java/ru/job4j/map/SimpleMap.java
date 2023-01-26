@@ -15,7 +15,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
 
     private int modCount = 0;
 
-    private MapEntry<?, ?>[] table = new MapEntry[capacity];
+    private MapEntry<K, V>[] table = new MapEntry[capacity];
 
     @Override
     public boolean put(K key, V value) {
@@ -42,9 +42,9 @@ public class SimpleMap<K, V> implements Map<K, V> {
     }
 
     private void expand() {
-        MapEntry<?, ?>[] rsl = new MapEntry[capacity * 2];
+        MapEntry<K, V>[] rsl = new MapEntry[capacity * 2];
         capacity = rsl.length;
-        for (MapEntry<?, ?> entry : table) {
+        for (MapEntry<K, V> entry : table) {
             if (entry == null) {
                 continue;
             }
