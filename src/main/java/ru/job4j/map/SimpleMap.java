@@ -15,7 +15,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
 
     private int modCount = 0;
 
-    private MapEntry<K, V>[] table = new MapEntry[capacity];
+    private MapEntry<?, ?>[] table = new MapEntry[capacity];
 
     @Override
     public boolean put(K key, V value) {
@@ -42,9 +42,9 @@ public class SimpleMap<K, V> implements Map<K, V> {
     }
 
     private void expand() {
-        MapEntry<K, V>[] rsl = new MapEntry[capacity * 2];
+        MapEntry<?, ?>[] rsl = new MapEntry[capacity * 2];
         capacity = rsl.length;
-        for (MapEntry<K, V> entry : table) {
+        for (MapEntry<?, ?> entry : table) {
             if (entry == null) {
                 continue;
             }
@@ -59,7 +59,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
         V rsl = null;
         int index = indexFor(hash((key == null) ? 0 : key.hashCode()));
         if (table[index] != null && Objects.equals(table[index].key, key)) {
-            rsl = table[index].value;
+            rsl = (V) table[index].value;
         }
         return rsl;
     }
@@ -100,13 +100,12 @@ public class SimpleMap<K, V> implements Map<K, V> {
                 if (!hasNext()) {
                     throw new NoSuchElementException("No elements");
                 }
-                return table[cell++].key;
+                return (K) table[cell++].key;
             }
         };
     }
 
     private static class MapEntry<K, V> {
-
         K key;
         V value;
 
