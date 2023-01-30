@@ -7,7 +7,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 
 public class AttributesUsage {
     public static void main(String[] args) throws IOException {
-        Path file = Path.of("C:/Users/Ivan_Kozhevnikov/IdeaProjects/job4j_design/data/Attributes.txt");
+        Path file = Path.of("");
         Files.createFile(file);
         BasicFileAttributes attributes = Files.readAttributes(file, BasicFileAttributes.class);
         System.out.println("Это обычный файл? " + attributes.isRegularFile());
