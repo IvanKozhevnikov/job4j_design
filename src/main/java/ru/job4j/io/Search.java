@@ -16,20 +16,16 @@ public class Search {
         search(start, p -> p.toFile().getName().endsWith(args[1])).forEach(System.out::println);
     }
 
-    private static void validate(String[] args) throws IOException {
-        if (args.length == 0) {
-            throw new IllegalArgumentException("The launch requires to specify the first parameter and the second parameter");
-        }
-        if (args.length == 1) {
-            throw new IllegalArgumentException("The launch requires to specify the second parameter");
+    private static void validate(String[] args) {
+        if (args.length != 2) {
+            throw new IllegalArgumentException("you must specify the root folder and the extension to search for");
         }
         File file = new File(args[0]);
         if (!file.isDirectory()) {
             throw new IllegalArgumentException(String.format("No such directory %s", file.getAbsoluteFile()));
         }
-        Path start = Paths.get(args[0]);
-        if (search(start, p -> p.toFile().getName().endsWith(args[1])).isEmpty()) {
-            throw new IllegalArgumentException(String.format("There are no files with this extension %s", args[1]));
+        if (!args[1].startsWith(".") || args[1].length() < 2) {
+            throw new IllegalArgumentException(String.format("Extension not specified %s", args[1]));
         }
     }
 
