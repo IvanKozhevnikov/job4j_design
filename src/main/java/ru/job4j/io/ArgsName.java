@@ -18,7 +18,7 @@ public class ArgsName {
     private void parse(String[] args) {
         for (String el : args) {
             verification(el);
-            el = debug(el);
+            el = el.substring(1);
             List<String> record;
             record = List.of(el.split("=", 2));
             values.put(record.get(0), record.get(1));
@@ -38,11 +38,6 @@ public class ArgsName {
         if (!string.startsWith("-") || !string.contains("=") || !string.matches("-\\S{1,}=\\S{1,}")) {
             throw new IllegalArgumentException();
         }
-    }
-
-    private String debug(String string) {
-        string = string.substring(1);
-        return string;
     }
 
     public static void main(String[] args) {
