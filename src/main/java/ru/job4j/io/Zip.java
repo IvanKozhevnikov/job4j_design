@@ -34,8 +34,7 @@ public class Zip {
         }
     }
 
-    private static void validate(String[] args) {
-        ArgsName argsName = ArgsName.of(args);
+    private static void validate(ArgsName argsName, String[] args) {
         if (args.length != 3) {
             throw new IllegalArgumentException("you must specify the root folder, extension, and folder to host the file");
         }
@@ -43,22 +42,23 @@ public class Zip {
         if (!path.toFile().exists()) {
             throw new IllegalArgumentException(String.format("There is no such source %s", path.toFile()));
         }
-        if (!argsName.get("o").contains(".")) {
-            throw new IllegalArgumentException("The file name is not specified");
+        if (!argsName.get("o").endsWith(".zip") || argsName.get("o").split("\\.")[0].length() == 0) {
+            throw new IllegalArgumentException(String.format("The file name or extension is specified incorrectly %s", argsName.get("o")));
         }
-        if (!argsName.get("e").startsWith(".")) {
+        if (!argsName.get("e").contains(".") || argsName.get("e").split("\\.")[0].length() == 0
+                || argsName.get("e").split("\\.")[1].length() == 0) {
             throw new IllegalArgumentException(String.format("Extension not specified %s", argsName.get("e")));
         }
     }
 
     public static void main(String[] args) throws IOException {
+        ArgsName argsName = ArgsName.of(args);
+        validate(argsName, args);
         Zip zip = new Zip();
         zip.packSingleFile(
                 new File("./pom.xml"),
                 new File("./pom.zip")
         );
-        validate(args);
-        ArgsName argsName = ArgsName.of(args);
         Path start = Paths.get(argsName.get("d"));
         List<Path> source = Search.search(start, p -> !p.toFile().getName().endsWith(argsName.get("e")));
         File target = new File(argsName.get("o"));
