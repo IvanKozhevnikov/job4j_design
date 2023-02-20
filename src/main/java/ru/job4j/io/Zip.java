@@ -45,8 +45,7 @@ public class Zip {
         if (!argsName.get("o").endsWith(".zip") || argsName.get("o").split("\\.")[0].length() == 0) {
             throw new IllegalArgumentException(String.format("The file name or extension is specified incorrectly %s", argsName.get("o")));
         }
-        if (!argsName.get("e").contains(".") || argsName.get("e").split("\\.")[0].length() == 0
-                || argsName.get("e").split("\\.")[1].length() == 0) {
+        if (!argsName.get("e").startsWith(".") || argsName.get("e").split("\\.")[0].length() > 0) {
             throw new IllegalArgumentException(String.format("Extension not specified %s", argsName.get("e")));
         }
     }
