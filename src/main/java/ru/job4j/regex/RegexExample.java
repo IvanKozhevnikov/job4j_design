@@ -27,25 +27,25 @@ public class RegexExample {
             String str = "123+=-456:/789";
             String[] rsl = str.split("\\D+");
             System.out.println(Arrays.toString(rsl));
-    }
+        }
 
         Pattern pattern3 = Pattern.compile("\\d{2}\\.\\d{2}\\.\\d{4}");
         String text3 = "24.04.1987 11.11.111111 99.99.99991 99.99.9999 99999999 0000.00.00";
         Matcher matcher3 = pattern3.matcher(text3);
         while (matcher3.find()) {
             System.out.println("Найдено совпадение: " + matcher3.group());
-    }
-            Pattern pattern4 = Pattern.compile("\\b\\d{2}\\.\\d{2}\\.\\d{4}\\b");
-            String text4 = "24.04.1987 11.11.111111 99.99.99991 99.99.9999 99999999 0000.00.00";
-            Matcher matcher4 = pattern4.matcher(text4);
-            while (matcher4.find()) {
-                System.out.println("Найдено совпадение: " + matcher4.group());
-            }
+        }
+        Pattern pattern4 = Pattern.compile("\\b\\d{2}\\.\\d{2}\\.\\d{4}\\b");
+        String text4 = "24.04.1987 11.11.111111 99.99.99991 99.99.9999 99999999 0000.00.00";
+        Matcher matcher4 = pattern4.matcher(text4);
+        while (matcher4.find()) {
+            System.out.println("Найдено совпадение: " + matcher4.group());
+        }
         Pattern pattern5 = Pattern.compile("\\S{1,}@\\S{1,}\\.\\S{1,}");
         String text5 = "peter-2022@example.com example65@mail_box.ru 123_45@example-mailbox.com";
         Matcher matcher5 = pattern5.matcher(text5);
         while (matcher5.find()) {
             System.out.println("Найдено совпадение: " + matcher5.group());
         }
-        }
     }
+}
