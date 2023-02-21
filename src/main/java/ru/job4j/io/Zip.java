@@ -42,10 +42,10 @@ public class Zip {
         if (!path.toFile().exists()) {
             throw new IllegalArgumentException(String.format("There is no such source %s", path.toFile()));
         }
-        if (!argsName.get("o").endsWith(".zip") || argsName.get("o").split("\\.")[0].length() == 0) {
+        if (!argsName.get("o").endsWith(".zip") || argsName.get("o").length() < 5) {
             throw new IllegalArgumentException(String.format("The file name or extension is specified incorrectly %s", argsName.get("o")));
         }
-        if (!argsName.get("e").startsWith(".") || argsName.get("e").split("\\.")[0].length() > 1) {
+        if (!argsName.get("e").startsWith(".") || argsName.get("e").length() < 2) {
             throw new IllegalArgumentException(String.format("Extension not specified %s", argsName.get("e")));
         }
     }
