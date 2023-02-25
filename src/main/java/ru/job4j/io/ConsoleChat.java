@@ -93,8 +93,7 @@ public class ConsoleChat {
     }
 
     public static void main(String[] args) {
-        ConsoleChat cc = new ConsoleChat("C:\\Users\\Ivan_Kozhevnikov\\IdeaProjects\\job4j_design\\data\\log.txt",
-                "C:\\Users\\Ivan_Kozhevnikov\\IdeaProjects\\job4j_design\\data\\bot.txt");
+        ConsoleChat cc = new ConsoleChat(args[0], args[1]);
         cc.run();
     }
 }
