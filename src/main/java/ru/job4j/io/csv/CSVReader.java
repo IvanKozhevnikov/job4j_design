@@ -46,10 +46,6 @@ public class CSVReader {
         if (!Paths.get(path).toFile().isFile() || !Paths.get(path).toFile().exists()) {
             throw new IllegalArgumentException("Invalid file path or the file does not exist");
         }
-
-        if (!out.contains(CONSOLE_PRINT) && !new File(out).isFile()) {
-            throw new IllegalArgumentException(String.format("Not a correct out %s", out));
-        }
     }
 
     private static List<Integer> searchColumnIndexes(String[] splitLine, String[] columns) {
