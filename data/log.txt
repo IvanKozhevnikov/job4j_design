@@ -1,0 +1,7 @@
+f
+Hello 
+стоп
+The bot is on pause
+продолжить
+закончить
+I`ll be back
