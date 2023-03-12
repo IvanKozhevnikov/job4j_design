@@ -19,6 +19,7 @@ public class CSVReader {
         String out = argsName.get("out");
         String filter = argsName.get("filter");
         validation(delimiter, path, out);
+
         try (Scanner scanner = new Scanner(new FileInputStream(Paths.get(path).toFile()), StandardCharsets.UTF_8)) {
             scanner.useDelimiter(";");
             List<String> printList = new ArrayList<>();
