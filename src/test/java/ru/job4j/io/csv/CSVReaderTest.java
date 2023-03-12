@@ -1,24 +1,16 @@
 package ru.job4j.io.csv;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import ru.job4j.io.ArgsName;
 
-import static junit.framework.TestCase.assertEquals;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.PrintStream;
-import java.nio.file.Path;
-import java.nio.file.Files;
-
 class CSVReaderTest {
-
 
     @Test
     void whenFilterTwoColumns(@TempDir Path folder) throws Exception {
@@ -126,6 +118,7 @@ class CSVReaderTest {
         CSVReader.handle(argsName);
         assertThat(Files.readString(target.toPath())).isEqualTo(expected);
     }
+
     @Test
     void whenFilterNotExistColumns(@TempDir Path folder) throws Exception {
         String data = String.join(
