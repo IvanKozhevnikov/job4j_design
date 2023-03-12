@@ -21,8 +21,8 @@ class CSVReaderTest {
                 "Jack;25;Johnson;Undergraduate",
                 "William;30;Brown;Secondary special"
         );
-        File file = folder.resolve("source.csv").toFile();
-        File target = folder.resolve("target.csv").toFile();
+        File file = folder.resolve("C:\\Users\\Ivan_Kozhevnikov\\IdeaProjects\\job4j_design\\data\\source.csv").toFile();
+        File target = folder.resolve("C:\\Users\\Ivan_Kozhevnikov\\IdeaProjects\\job4j_design\\data\\target.csv").toFile();
         ArgsName argsName = ArgsName.of(new String[]{
                 "-path=" + file.getAbsolutePath(), "-delimiter=;",
                 "-out=" + target.getAbsolutePath(), "-filter=name,education"});
@@ -47,8 +47,8 @@ class CSVReaderTest {
                 "Jack,25,Johnson,Undergraduate",
                 "William,30,Brown,Secondary special"
         );
-        File file = folder.resolve("source.csv").toFile();
-        File target = folder.resolve("target.csv").toFile();
+        File file = folder.resolve("C:\\Users\\Ivan_Kozhevnikov\\IdeaProjects\\job4j_design\\data\\source.csv").toFile();
+        File target = folder.resolve("C:\\Users\\Ivan_Kozhevnikov\\IdeaProjects\\job4j_design\\data\\target.csv").toFile();
         ArgsName argsName = ArgsName.of(new String[]{
                 "-path=" + file.getAbsolutePath(), "-delimiter=,",
                 "-out=" + target.getAbsolutePath(), "-filter=education,age,last_name"
