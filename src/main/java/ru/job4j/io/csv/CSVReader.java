@@ -4,6 +4,7 @@ import ru.job4j.io.ArgsName;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,10 +19,10 @@ public class CSVReader {
         String delimiter = argsName.get("delimiter");
         String out = argsName.get("out");
         String filter = argsName.get("filter");
-        validation(delimiter, path, out);
+        validation(delimiter, path);
 
         try (Scanner scanner = new Scanner(new FileInputStream(Paths.get(path).toFile()), StandardCharsets.UTF_8)) {
-            scanner.useDelimiter(";");
+            scanner.useDelimiter(delimiter);
             List<String> printList = new ArrayList<>();
             List<Integer> indexColumnList = new ArrayList<>();
             while (scanner.hasNextLine()) {
@@ -38,12 +39,13 @@ public class CSVReader {
         }
     }
 
-    private static void validation(String delimiter, String path, String out) {
+    private static void validation(String delimiter, String path) {
+        Path pathSource = Paths.get(path);
         if (!";".equals(delimiter) && !",".equals(delimiter)) {
             throw new IllegalArgumentException("Wrong symbol for separation: " + delimiter);
         }
 
-        if (!Paths.get(path).toFile().isFile() || !Paths.get(path).toFile().exists()) {
+        if (!pathSource.toFile().isFile() || !pathSource.toFile().exists()) {
             throw new IllegalArgumentException("Invalid file path or the file does not exist");
         }
     }
@@ -63,25 +65,29 @@ public class CSVReader {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < indexColumnList.size(); i++) {
             int index = indexColumnList.get(i);
-            if (i == indexColumnList.size() - 1) {
-                stringBuilder.append(line[index]);
-            } else {
-                stringBuilder.append(line[index]).append(delimiter);
-            }
+            stringBuilder = i == indexColumnList.size() - 1 ? stringBuilder.append(line[index])
+                    : stringBuilder.append(line[indexColumnList.get(i)]).append(delimiter);
         }
         return stringBuilder.toString();
         }
 
     private static void printer(List<String> printList, String out) {
-        if (out.contains("stdout")) {
+        if (out.equals(CONSOLE_PRINT)) {
             printList.forEach(System.out::println);
         } else {
-            try (PrintWriter printWriter = new PrintWriter(new FileWriter(out, StandardCharsets.UTF_8))) {
+            try (PrintWriter printWriter = new PrintWriter(out, StandardCharsets.UTF_8)) {
                 printList.forEach(printWriter::println);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+    }
+    public static void main(String[] args) throws Exception {
+        if (args.length != 4) {
+            throw new IllegalArgumentException("4 parameters are required for the application to work");
+        }
+        ArgsName argsName = ArgsName.of(args);
+        handle(argsName);
     }
 }
 
