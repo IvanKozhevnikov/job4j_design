@@ -72,7 +72,7 @@ public class CSVReader {
         }
 
     private static void printer(List<String> printList, String out) {
-        if (out.equals(CONSOLE_PRINT)) {
+        if (CONSOLE_PRINT.equals(out)) {
             printList.forEach(System.out::println);
         } else {
             try (PrintWriter printWriter = new PrintWriter(out, StandardCharsets.UTF_8)) {
