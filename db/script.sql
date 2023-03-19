@@ -1,5 +1,4 @@
-create table shop_emploee_doc(
-id serial primary key,
+create table shop_emploee_doc (id serial primary key,
 emploee varchar(255),
 salary integer,
 resume text,
