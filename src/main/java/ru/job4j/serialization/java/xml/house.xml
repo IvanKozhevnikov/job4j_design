@@ -2,7 +2,7 @@
 <house built="true" rooms="3" description="capital">
     <materials concrete="m-300" shingles="soft"/>
     <specifications>
-        <specification>reliable</specification>
-        <specification>enduring</specification>
+        <specification>Reliable</specification>
+        <specification>Enduring</specification>
     </specifications>
 </house>
