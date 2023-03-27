@@ -13,6 +13,22 @@ public class PersonalData {
         this.rights = rights;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public String getSnils() {
+        return snils;
+    }
+
+    public String getInn() {
+        return inn;
+    }
+
+    public String getRights() {
+        return rights;
+    }
+
     @Override
     public String toString() {
         return "PersonalData{"

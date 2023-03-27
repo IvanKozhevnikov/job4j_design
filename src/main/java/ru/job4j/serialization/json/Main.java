@@ -8,7 +8,7 @@ public class Main {
         final Person person = new Person(false, 30, new Contact("11-111"),
                 new String[] {"Worker", "Married"});
         final Employee employee = new Employee(true, 2, "programmer",
-                new PersonalData("email&mail.ru", "387647683", "98769869", "0025400"), new String[] {"java", "Spring", "SQL", "JavaScript"});
+                new PersonalData("email&mail.ru", "387647683", "98769869", "0025400"), "java", "Spring", "SQL", "JavaScript");
         /* Преобразуем объект person в json-строку. */
         final Gson gson = new GsonBuilder().create();
         System.out.println(gson.toJson(person));
