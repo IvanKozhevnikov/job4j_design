@@ -22,6 +22,7 @@ insert into devices_people(device_id, people_id) values (1, 1), (1, 2), (1, 5), 
 insert into devices_people(device_id, people_id) values (2, 2), (2, 3), (2, 4), (2, 6);
 insert into devices_people(device_id, people_id) values (3, 1), (3, 3); (3, 5), (3, 6);
 
+
 select avg(price) from devices;
 
 select p.name, avg(d.price)
