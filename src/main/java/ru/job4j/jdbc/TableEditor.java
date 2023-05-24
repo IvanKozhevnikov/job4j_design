@@ -27,14 +27,13 @@ public class TableEditor implements AutoCloseable {
         connection = DriverManager.getConnection(url, login, password);
     }
 
-    // создает пустую таблицу без столбцов с указанным именем
     public void createTable(String tableName) throws Exception {
                 String createTable =  String.format(
                         "CREATE TABLE IF NOT EXISTS %s();",
                         tableName);
                 execute(createTable);
     }
-    // удаляет таблицу по указанному имени
+
     public void dropTable(String tableName) throws Exception {
         String dropTable =  String.format(
                 "DROP TABLE IF EXISTS %s;",
@@ -42,7 +41,7 @@ public class TableEditor implements AutoCloseable {
         );
         execute(dropTable);
     }
-    // добавляет столбец в таблицу
+
     public void addColumn(String tableName, String columnName, String type) throws Exception {
             String addColumn =  String.format(
                     "ALTER TABLE %s ADD COLUMN %s %s;",
@@ -52,7 +51,7 @@ public class TableEditor implements AutoCloseable {
             );
             execute(addColumn);
     }
-    // удаляет столбец из таблицы
+
     public void dropColumn(String tableName, String columnName) throws Exception {
         String dropColumn =  String.format(
                 "ALTER TABLE %s DROP COLUMN %s;",
@@ -61,7 +60,7 @@ public class TableEditor implements AutoCloseable {
         );
         execute(dropColumn);
     }
-    // переименовывает столбец
+
     public void renameColumn(String tableName, String columnName, String newColumnName) throws Exception {
         String renameColumn =  String.format(
                 "ALTER TABLE %s RENAME COLUMN %s TO %s;",
