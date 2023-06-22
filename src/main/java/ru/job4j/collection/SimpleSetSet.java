@@ -10,7 +10,7 @@ public class SimpleSetSet {
         if (size == container.length) {
             grow();
         }
-        boolean result = !contains(value);
+        boolean result = contains(value);
         if (result) {
             container[size++] = value;
         }
